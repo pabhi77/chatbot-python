@@ -1,14 +1,7 @@
-import numpy as np
-import random
+
 import json
 
-import torch
-import torch.nn as nn
-from torch.utils.data import Dataset, DataLoader
-
 from nltk_utils import bag_of_words, tokenize, stem
-from model import NeuralNet
-
 with open('intents.json', 'r') as f:
     intents = json.load(f)
 
@@ -27,3 +20,10 @@ for intent in intents['intents']:
         all_words.extend(w)
         # add to xy pair
         xy.append((w, tag))
+
+ignore_words = ['?', '.', '!']   
+all_words = [stem(w) for w in all_words if w not in ignore_words]
+# remove duplicates and sort
+all_words = sorted(set(all_words))
+tags = sorted(set(tags))    
+print(tags)

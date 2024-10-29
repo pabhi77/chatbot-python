@@ -6,7 +6,7 @@ stemmer=PorterStemmer()
 def tokenize(sentence):
     return nltk.word_tokenize(sentence)
 
-def stemm(word):
+def stem(word):
     return stemmer.stem(word.lower())
 
 def bag_of_words(all_words,tokenized_sentence):
@@ -17,5 +17,5 @@ def bag_of_words(all_words,tokenized_sentence):
 # stringA=tokenize(stringA)
 # print(stringA)
 words=["Organize","organizes","organizing"]
-stemmed_words=[stemm(w)for w in words]
+stemmed_words=[stem(w)for w in words]
 print(stemmed_words)
